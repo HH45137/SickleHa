@@ -27,6 +27,13 @@ endif (CMAKE_SYSTEM_NAME MATCHES "Linux")
 if (CMAKE_SYSTEM_NAME MATCHES "Windows")
 
     set(CMAKE_EXE_LINKER_FLAGS "-static")
+
+    # GLM
+    find_package(glm CONFIG REQUIRED)
+
     add_executable(${PROJECT_NAME} src/main.cpp ${H_SRC} ${CPP_SRC})
+
+    # GLM library
+    target_link_libraries(${PROJECT_NAME} PRIVATE glm::glm-header-only)
 
 endif (CMAKE_SYSTEM_NAME MATCHES "Windows")
